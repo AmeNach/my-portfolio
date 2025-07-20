@@ -1,0 +1,30 @@
+---
+title: "My Journey into ML and Agentic AI as an Algorithms Engineer"
+format: html
+---
+
+# 👋 Welcome!
+
+Hi and thank you for taking interest in my blog (Although for now it's just a draft for myself).
+
+This site started as my notebook for the [Fastai Practical Deep Learning Course](https://course.fast.ai/), but it will grow into a collection of learnings, experiments, and web apps across different domains.
+
+Hope you enjoy!
+
+## 🧠 Courses & Notes
+
+- 📘 [Fastai Course](posts/fastai/)
+- 🛠️ 
+- 💬 
+- 🌐 
+
+---
+
+## 🧪 Live Apps
+
+Here are a few web apps I've built during these projects:
+
+- 🖼️
+- 🧮
+
+Check the `apps/` folder on [GitHub](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME) for full source code.

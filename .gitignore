@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.ipynb_checkpoints
+
+# Quarto
+_site/
+*.qmd_files/
+*.quarto/
+
+# Gradio
+*.gradio

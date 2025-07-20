@@ -1,0 +1,23 @@
+---
+title: "About Me"
+format: html
+---
+
+# 👤 About Me
+
+I'm an Algorithms Engineer with nearly three years of experience at a small French company, where I've worked on a variety of projects ranging from low-level embedded systems to high-level algorithm design.
+
+My responsibilities have included:
+- Developing and deploying a regression testing tool to evaluate the quality of internal navigation solutions
+- Implementing novel INS/GNSS fusion algorithms for robust positioning
+- Refactoring and enhancing a C++ codebase used in both embedded and post-processing systems
+
+Although my background isn't directly in AI, I've always followed the field with curiosity and admiration. I did have an early exposure to neural networks during a research internship, where I worked on depth estimation using deep learning — but that was a few years ago.
+
+Fast-forward three years, and I realized how much the field has progressed — and how much I wanted to catch up. After asking ChatGPT (naturally) how best to dive back in, I found myself enrolled in the excellent [Fast.ai Practical Deep Learning for Coders](https://course.fast.ai/) course.
+
+This blog is a way for me to document that journey publicly — a mix of notes, experiments, and web apps — while I continue to re-enter and grow in the world of modern machine learning.
+
+You can find me on:
+- [GitHub](https://github.com/AmeNach)
+- [Linkedin](https://www.linkedin.com/in/amel-nait-achour/)

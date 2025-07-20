@@ -1,0 +1,8 @@
+---
+title: "Fastai Course Notes"
+---
+
+## Fastai Lessons
+
+- [Lesson 2 - Deployment](02-deployment.qmd)
+- [Lesson 3 - ](.qmd)

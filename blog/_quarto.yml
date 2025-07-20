@@ -1,0 +1,36 @@
+project:
+  type: website
+
+execute:
+  freeze: true
+
+# Remove the metadata-files line
+resources:
+  - "*.ipynb"
+
+website:
+  title: "My Portfolio"
+  site-url: "https://github.com/AmeNach/my-porfolio"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Posts"
+        menu:
+          - text: "Fastai"
+            href: posts/fastai/index.qmd
+      - text: "About"
+        href: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/AmeNach/my-porfolio
+  page-footer:
+    left: "© 2025 Amel Nait Achour"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: flatly
+    toc: true
+    code-fold: false
+    html-math-method: katex

@@ -3,6 +3,7 @@ title: Cat vs. Dog Classifier
 jupyter: python3
 execute:
   freeze: true
+number-sections: true
 ---
 
 # Setup and Training

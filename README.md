@@ -19,20 +19,22 @@ Each app lives in its own folder under `apps/`, with isolated dependencies using
 
 | App Name               | Description                             | Live Demo                                      |
 |------------------------|-----------------------------------------|------------------------------------------------|
-| `CatVsDog-classifier`  | Fastai model for image classification   | [Demo]()                                       |
+| `CatVsDog-classifier`  | Fastai model for image classification   | [Demo](https://huggingface.co/spaces/AmelNach/CatVsDog-classifier)                                       |
 | Coming soon            |                                         | Coming soon                                    |
 
 ---
 
 ## 📁 Project Structure
 
+```
 my-portfolio/
 ├── blog/ ← Quarto blog
 ├── apps/ ← Web apps (Gradio/Streamlit/etc.)
-│ ├── image-classifier/
+│ ├── CatVsDog-classifier/
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
 
 ## 🛠️ Environment Setup (via `uv`)
 

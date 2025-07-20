@@ -879,6 +879,8 @@ interface.launch()
 
 While working on this first post, I encountered and resolved several challenges worth documenting.
 
+##  Development Environment
+
 Initially, all development—including model training and testing—was done in a Google Colab notebook. I wanted to preserve the cell outputs from that session to accurately reflect the training process in the final blog post. This meant converting the Colab notebook into a Quarto .qmd file without re-executing the code during rendering, so outputs would remain intact.
 
 To prevent code re-execution, I added the following to both the YAML header of the .qmd file and the global Quarto configuration:
@@ -899,6 +901,7 @@ jupyter nbconvert my-notebook.ipynb --to markdown --output converted-notebook.qm
 
 Then, I renamed the file to `.qmd` and manually added the necessary YAML header.
 
+## Cross-Platform Path Handling
 Another issue arose when I attempted to run the exported model on my local Windows machine. Since the model was trained in a Unix environment, it used `PosixPath` internally (via `pathlib`), which led to this error on Windows:
 
 ```sh
@@ -914,4 +917,58 @@ if platform.system() == 'Windows':
     pathlib.PosixPath = pathlib.WindowsPath
 ```
 
-Lastly, for consistent predictions, ensure your local environment mirrors the dependency versions used during model training—particularly for `fastai`, `torch`, and `torchvision`.
+## Version Matching for Reproducibility
+
+For consistent predictions, ensure your local environment mirrors the dependency versions used during model training—particularly for `fastai`, `torch`, and `torchvision`.
+
+## Deployment to Hugging Face Spaces with Docker
+When deploying the Gradio app to Hugging Face Spaces, things weren't so straight-forward as I had assumed:
+
+### Python Version Mismatch
+The model was trained using Python 3.11, but Hugging Face Spaces (non-Docker) currently run on Python 3.10 by default. Rather than downgrading and retraining the model to match the runtime, I opted to use a Docker-based Space, which gave me full control over the environment and allowed me to use Python 3.11 inside the container.
+
+### Incompatible Dependency Resolution
+As previously mentionned, I used uv for installing dependencies locally. However, uv pulls from a newer, more bleeding-edge index than Hugging Face's default build environment supports. This led to version conflicts and build failures on Hugging Face. Switching back to a traditional pip-based requirements.txt and installing dependencies during the Docker build step solved this issue.
+
+### Pickle Compatibility with load_learner()
+The FastAI load_learner() function relies on Python’s pickle module, insecure by design.
+For future applications, the correct process would be:
+1. Separately save model weights and architecture
+  ```{python}
+  learn.export(fname='model-arch.pkl')
+  learn.save('weights')
+  ```
+
+2. For deployment, recreate the learner explicitly then load weights
+  ```{python}
+
+  def build_learner(weights_path='weights', img_size=224):
+    # Define the path to your model weights (should be in the same folder or passed explicitly)
+    path = Path()
+
+    # Recreate the DataLoaders (only needed to get vocab, transforms, etc.)
+    # You can use a dummy set of images or pass a stub list if not using full data
+    dblock = DataBlock(
+        blocks=(ImageBlock, CategoryBlock),
+        get_items=get_image_files,
+        splitter=RandomSplitter(valid_pct=0.2, seed=42),
+        get_y=parent_label,
+        item_tfms=Resize(img_size),
+    )
+
+    # You don't need real images for inference; a fake DataLoader works
+    dummy_path = path / "inference_dummy"
+    dummy_path.mkdir(exist_ok=True)
+    (dummy_path / "cat").mkdir(exist_ok=True)
+    # You can skip adding actual images if just doing `.load()` + `.predict()`
+
+    dls = dblock.dataloaders(dummy_path, bs=1)
+
+    # Rebuild the model architecture
+    learn = vision_learner(dls, resnet34, pretrained=False)
+
+    return learn
+  
+  learn = build_learner() 
+  learn.load('weights')
+  ```

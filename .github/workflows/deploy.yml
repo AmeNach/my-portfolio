@@ -1,0 +1,50 @@
+name: Publish Quarto Site
+
+on:
+  push:
+    branches: [main, develop]  # adjust branch names as needed
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+
+    - name: Install Python (if needed for your notebooks)
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Install Python dependencies (if you have requirements.txt)
+      run: |
+        if [ -f blog/requirements.txt ]; then
+          pip install -r blog/requirements.txt
+        fi
+    
+    - name: Render Quarto Project
+      run: |
+        cd blog
+        quarto render
+
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: blog/_site  # if output-dir: docs change to blog/docs 
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2

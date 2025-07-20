@@ -5,8 +5,9 @@ __pycache__/
 *.ipynb_checkpoints
 
 # Quarto
-_freeze/
-
+_site/
+*.qmd_files/
+*.quarto/
 
 # Gradio
 *.gradio

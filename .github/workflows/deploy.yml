@@ -5,6 +5,7 @@ on:
     branches: [main, develop]  # adjust branch names as needed
   pull_request:
     branches: [main, develop]
+  workflow_dispatch:  # This enables manual triggering
 
 permissions:
   contents: read

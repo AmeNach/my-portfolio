@@ -8,6 +8,7 @@ __pycache__/
 _site/
 *.qmd_files/
 *.quarto/
+docs/
 
 # Gradio
 *.gradio

@@ -1,8 +1,12 @@
 project:
   type: website
-
+  output-dir: docs
 execute:
+  echo: false
+  output: true
+  cache: true
   freeze: true
+  embed-resources: true
 
 # Remove the metadata-files line
 resources:

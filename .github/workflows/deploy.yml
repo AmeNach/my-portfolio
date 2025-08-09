@@ -50,7 +50,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: blog/_site  # Change to blog/docs if you have output-dir: docs in _quarto.yml
+          path: blog/docs  # Change to blog/docs if you have output-dir: docs in _quarto.yml
 
   deploy:
     environment:

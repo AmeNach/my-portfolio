@@ -1,0 +1,7 @@
+---
+title: "Kaggle Competitions Notes"
+---
+
+## Competitions
+
+- [Titanic Competition](titanic_competition.ipynb)

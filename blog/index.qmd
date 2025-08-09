@@ -14,7 +14,7 @@ Hope you enjoy!
 ## 🧠 Courses & Notes
 
 - 📘 [Fastai Course](posts/fastai/)
-- 🛠️ 
+- 🛠️ [Kaggle Competitions](posts/kaggle/)
 - 💬 
 - 🌐 
 

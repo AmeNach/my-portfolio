@@ -23,6 +23,8 @@ website:
         menu:
           - text: "Fastai"
             href: posts/fastai/index.qmd
+          - text: "Kaggle Competitions"
+            href: posts/kaggle/index.qmd
       - text: "About"
         href: about.qmd
     right:

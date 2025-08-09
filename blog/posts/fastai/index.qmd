@@ -4,5 +4,5 @@ title: "Fastai Course Notes"
 
 ## Fastai Lessons
 
-- [Lesson 2 - Deployment](02-deployment.qmd)
-- [Lesson 3 - Neural Net Foundations](03-neural_net_foundation.qmd)
+- [Lesson 2 - Deployment](02_deployment.ipynb)
+- [Lesson 3 - Neural Net Foundations](03_neural_net_foundation.ipynb)

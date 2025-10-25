@@ -6,3 +6,4 @@ title: "Fastai Course Notes"
 
 - [Lesson 2 - Deployment](02_deployment.ipynb)
 - [Lesson 3 - Neural Net Foundations](03_neural_net_foundation.ipynb)
+- [Lesson 3 - Natural Language (NLP)](04_nlp.ipynb)
